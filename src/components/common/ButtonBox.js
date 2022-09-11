@@ -14,7 +14,7 @@ export default function ButtonBox({ children }) {
 
 const Wrapper = styled.div`
     width: 41vw;
-    height: calc(28vh - 78px);
+    height: calc(33vh - 107px);
     border-radius: 5px;
     background-color: #A328D6;
     position: relative;
@@ -33,7 +33,7 @@ const Wrapper = styled.div`
         border-radius: 50%;
 
         font-weight: 400;
-        font-size: 10px;
+        font-size: 22px;
         color: #FFFFFF;
     }
 

@@ -1,4 +1,4 @@
-import styled from 'style-components';
+import styled from 'styled-components';
 
 const Button = styled.button`
     width: 87vw;
@@ -6,6 +6,7 @@ const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
     border-radius: 5px;
     background-color: #A328D6;
 

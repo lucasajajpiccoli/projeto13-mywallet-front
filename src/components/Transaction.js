@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export default function Transaction({ date, description, value, type }) {
+export default function Transaction({ transaction }) {
+    const { date, description, value, type } = transaction;
+
     return (
         <Wrapper type={type}>
             <div>

@@ -38,8 +38,8 @@ export default function SignIn() {
                 alert("A tentativa de log-in foi mal sucedida");
                 setDisable(false);
                 setData({...initialData});
-            })
-            .then(response => {
+            });
+        request.then((response) => {
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("name", response.data.name);
                 navigate("/wallet");

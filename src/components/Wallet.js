@@ -25,14 +25,14 @@ export default function Wallet () {
                 localStorage.setItem("token", "");
                 localStorage.setItem("name", "");
                 navigate("/");
-            })
-            .then(response => {
+            });
+        request.then(response => {
                 setTransactions(response.data.transactions);
                 setTotal(response.data.total);
             });
     }, []);
 
-    if (transactions === null) {
+    if (transactions === null || total === null) {
         return (
             <Loading />
         );

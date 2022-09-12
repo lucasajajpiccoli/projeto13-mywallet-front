@@ -40,8 +40,8 @@ export default function SignUp() {
                 alert("A tentativa de cadastro foi mal sucedida");
                 setDisable(false);
                 setData({...initialData});
-            })
-            .then(() => {
+            });
+        request.then(() => {
                 navigate("/");
             });
     }

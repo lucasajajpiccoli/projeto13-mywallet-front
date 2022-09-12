@@ -43,6 +43,7 @@ export default function Cash() {
     function sendForm(event) {
         event.preventDefault();
         const request = createTransaction(localStorage.getItem("token"), paramTransaction, data);
+        console.log(data);
         setDisable(true);
         request
             .catch(error => {
@@ -55,8 +56,8 @@ export default function Cash() {
                     setDisable(false);
                     setData({...initialData});
                 }
-            })
-            .then(() => {
+            });
+        request.then(() => {
                 navigate("/wallet");
             });
     }

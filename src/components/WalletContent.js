@@ -2,34 +2,24 @@ import styled from 'styled-components';
 
 import Transaction from './Transaction';
 
-export default function WalletContent() {
+export default function WalletContent({ transactions, total }) {
+    if (transactions.length === 0) {
+        return (<NoRegisters />);
+    }
+
     return (
         <Wrapper type="in">
             <div>
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
-                <Transaction />
+                {transactions.map((transaction, index) => 
+                    <Transaction
+                        key={index}
+                        transaction={transaction}
+                    />
+                )}
             </div>
             <div>
                 <span>SALDO</span>
-                <span>2849,96</span>
+                <span type={total.type}>{total.value}</span>
             </div>
         </Wrapper>
     );

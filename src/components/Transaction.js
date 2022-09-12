@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export default function Transaction() {
+export default function Transaction({ date, description, value, type }) {
     return (
-        <Wrapper type="in">
+        <Wrapper type={type}>
             <div>
-                <div>30/11</div>
-                <div>Almoço mãe</div>
+                <div>{date}</div>
+                <div>{description}</div>
             </div>
-            <div>39,90</div>
+            <div>{value}</div>
         </Wrapper>
     );
 }

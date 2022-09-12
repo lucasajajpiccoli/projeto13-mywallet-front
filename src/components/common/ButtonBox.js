@@ -1,8 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function ButtonBox({ children }) {
+    const navigate = useNavigate();
+
+    function addTransaction () {
+        const paramTransaction = children === "+" ? "in" : "out";
+        navigate(`/cash/${paramTransaction}`);
+    }
+
     return (
-        <Wrapper>
+        <Wrapper onClick={addTransaction}>
             <div>{children}</div>
             <div>
                 <div>Nova</div>

@@ -1,19 +1,50 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-import logout from '../assets/images/logout.svg';
+import { readWallet } from '../services/API';
 
 import Title from '../style/Title';
-import WalletContent from './WalletContent';
+
+import Loading from './common/Loading';
 import ButtonBox from './common/ButtonBox';
 
+import SignOut from './SignOut';
+import WalletContent from './WalletContent';
+
 export default function Wallet () {
+    const [transactions, setTransactions] = useState(null);
+    const [total, setTotal] = useState(null);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const request = readWallet(localStorage.getItem("token"));
+        request
+            .catch(() => {
+                localStorage.setItem("token", "");
+                localStorage.setItem("name", "");
+                navigate("/");
+            })
+            .then(response => {
+                setTransactions(response.data.transactions);
+                setTotal(response.data.total);
+            });
+    }, []);
+
+    if (transactions === null) {
+        return (
+            <Loading />
+        );
+    }
+
     return (
         <Wrapper>
             <Title>
-                <span>Olá, Fulano</span>
-                <img src={logout} alt="" />
+                <span>Olá, {localStorage.getItem("name")}</span>
+                <SignOut />
             </Title>
-            <WalletContent />
+            <WalletContent transactions={transactions} total={total} />
             <div>
                 <ButtonBox>+</ButtonBox>
                 <ButtonBox>-</ButtonBox>

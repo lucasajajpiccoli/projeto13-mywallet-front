@@ -8,7 +8,7 @@ export default function WalletContent({ transactions, total }) {
     }
 
     return (
-        <Wrapper type="in">
+        <Wrapper type={total.type}>
             <div>
                 {transactions.map((transaction, index) => 
                     <Transaction
